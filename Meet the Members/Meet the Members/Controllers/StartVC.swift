@@ -56,7 +56,7 @@ class StartVC: UIViewController {
         // You can also go to https://developer.apple.com/documentation/uikit/uibutton#topics
         // where you will find all the available APIs.
         
-        // MARK: >> Your Code Here <<
+        button.backgroundColor = .white
         
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -85,6 +85,7 @@ class StartVC: UIViewController {
         // - Constraints can only be created in the same view hierarchy.
         //   So you have to add the view subview before creating constraints.
         view.addSubview(welcomeLabel)
+        view.addSubview(startButton)
         
         
         // And add the constraints
@@ -108,15 +109,15 @@ class StartVC: UIViewController {
             welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             
             //     welcomeLabel.trailingAnchor = view.trailingAnchor - 50
-            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
-        ])
-        
-        // MARK: >> Your Code Here <<
-        
+            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
+
+    ])
+    
         NSLayoutConstraint.activate([
-            // MARK: >> Your Code Here <<
+            startButton.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 200),
+            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 70),
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -70),
         ])
-        
         
         // MARK: STEP 3: Adding Callbacks
         // Action Item:
