@@ -86,9 +86,6 @@ class PokedexVC: UIViewController {
             searchBar.delegate = self
             view.addSubview(searchBar)
             
-            let safeArea = view.safeAreaInsets
-            //let searchBarSTF = searchBar.sizeThatFits(CGSize.init(width: view.bounds.width - 50, height: 30))
-            searchBar.frame = CGRect.init(x: view.bounds.width/8, y: safeArea.top + 120, width: view.bounds.width / 3.5 * 3, height: 30)
             searchBar.tintColor = .blue
             searchBar.barTintColor = .white
             searchBar.showsCancelButton = true
@@ -98,7 +95,16 @@ class PokedexVC: UIViewController {
             copyCurrPokemons = currPokemons
             currTypes = types
             searchBar.scopeButtonTitles = currTypes
+            
         }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let safeArea = view.safeAreaInsets
+        //let searchBarSTF = searchBar.sizeThatFits(CGSize.init(width: view.bounds.width - 50, height: 30))
+        searchBar.frame = CGRect.init(x: view.bounds.width/8, y: safeArea.top + 120, width: view.bounds.width / 3.5 * 3, height: 30)
+    }
+    
         
         @objc func didTapToggle(_ sender: UIButton) {
             if inGridView {
@@ -135,7 +141,7 @@ class PokedexVC: UIViewController {
             if inGridView {
                 return CGSize(width: view.frame.width / 3, height: view.frame.width / 3)
             }
-            return CGSize(width: 100, height: 120)
+            return CGSize(width: view.frame.width, height: 120)
         }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

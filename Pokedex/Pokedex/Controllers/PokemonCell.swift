@@ -13,11 +13,13 @@ class PokemonCell: UICollectionViewCell {
     var pokemon: Pokemon? {
         didSet {
             let link = pokemon?.imageUrl
-            let stringfied = link?.absoluteString
-            if let url = URL(string: (stringfied)!) {
+            if let stringfied = link?.absoluteString,
+                let url = URL(string: stringfied) {
                 if let data = try? Data(contentsOf: url) {
                         imageView.image = UIImage(data: data)
                     }
+            } else {
+                imageView.image = nil
             }
             
             let name: String = pokemon?.name ?? ""
