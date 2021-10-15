@@ -316,7 +316,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y2JVY29H4R;
+<<<<<<< HEAD
 				INFOPLIST_FILE = "$(SRCROOT)/Meet the Members/Support Files/Info.plist";
+=======
+				INFOPLIST_FILE = "Meet the Members/Support Files/Info.plist";
+>>>>>>> 3b5f3e6205ea4ad23d011fc09174059435286575
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,7 +339,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y2JVY29H4R;
+<<<<<<< HEAD
 				INFOPLIST_FILE = "$(SRCROOT)/Meet the Members/Support Files/Info.plist";
+=======
+				INFOPLIST_FILE = "Meet the Members/Support Files/Info.plist";
+>>>>>>> 3b5f3e6205ea4ad23d011fc09174059435286575
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
