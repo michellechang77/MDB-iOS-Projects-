@@ -67,6 +67,25 @@ class SOCAuthManager {
     }
     
     /* TODO: Firebase sign up handler, add user to firestore */
+    func signUp(withFullName fullname: String, withEmail email: String, withUsername username: String, withPassword password: String, completion: ((Result<User, Error>)-> Void)?) {
+        auth.createUser(withEmail: email, password: password) {[weak self] authResult, error in
+            if let error = error {
+                let nsError = error as NSError
+                completion?(.failure(nsError))
+                return
+                }
+            
+            guard let authResult = authResult else {
+                completion? (.failure(SignInErrors.internalError))
+                return
+            }
+            
+            let u: SOCUser = SOCUser(uid: authResult.user.uid, username: username, email: email, fullname: fullname, savedEvents: [])
+                FIRDatabaseRequest.shared.setUser(u) { () }
+                self?.linkUserSignUp(withuid: authResult.user.uid, completion: completion)
+            
+        }
+    }
     
     func isSignedIn() -> Bool {
         return auth.currentUser != nil
@@ -97,6 +116,24 @@ class SOCAuthManager {
             completion?(.success(user))
         }
     }
+    
+    private func linkUserSignUp(withuid uid: String,
+                              completion: ((Result<User, Error>)->Void)?) {
+            
+            userListener = db.collection("users").document(uid).addSnapshotListener { [weak self] docSnapshot, error in
+                guard let document = docSnapshot else {
+                    completion?(.failure(error!))
+                    return
+                }
+                guard let user = try? document.data(as: SOCUser.self) else {
+                    completion?(.failure(error!))
+                    return
+                }
+                
+                self?.currentUser = user
+                //completion?(.success(user))
+            }
+        }
     
     private func unlinkCurrentUser() {
         userListener?.remove()

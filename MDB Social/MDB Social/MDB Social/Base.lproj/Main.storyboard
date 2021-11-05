@@ -11,7 +11,7 @@
         <!--Feed NavigationVC-->
         <scene sceneID="h6r-Tp-HOC">
             <objects>
-                <navigationController id="JFw-Ip-UdR" customClass="FeedNavigationVC" customModule="MDB_Social_No_Starter" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="JFw-Ip-UdR" customClass="FeedNavigationVC" customModule="MDB_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cMN-Zw-Rcr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -27,7 +27,7 @@
         <!--FeedVC-->
         <scene sceneID="n1h-L1-0nc">
             <objects>
-                <viewController id="5sV-fM-dk3" customClass="FeedVC" customModule="MDB_Social_No_Starter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5sV-fM-dk3" customClass="FeedVC" customModule="MDB_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u5o-b8-XRI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
