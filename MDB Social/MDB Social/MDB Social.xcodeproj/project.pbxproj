@@ -33,6 +33,9 @@
 		1AFB4D88271C2327006621E9 /* FeedNavigationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB4D87271C2327006621E9 /* FeedNavigationVC.swift */; };
 		1AFB4D8A271C23D9006621E9 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AFB4D89271C23D9006621E9 /* Auth.storyboard */; };
 		3646A393272F213F00595062 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3646A392272F213F00595062 /* SignupVC.swift */; };
+		3686552C273738B200836616 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3686552B273738B200836616 /* EventDetailsVC.swift */; };
+		3686552E27373F3900836616 /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3686552D27373F3900836616 /* CreateEventVC.swift */; };
+		368655302737848C00836616 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3686552F2737848C00836616 /* EventCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,9 @@
 		1AFB4D87271C2327006621E9 /* FeedNavigationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedNavigationVC.swift; sourceTree = "<group>"; };
 		1AFB4D89271C23D9006621E9 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		3646A392272F213F00595062 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		3686552B273738B200836616 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
+		3686552D27373F3900836616 /* CreateEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
+		3686552F2737848C00836616 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				1AFB4D85271C22FD006621E9 /* FeedVC.swift */,
+				3686552D27373F3900836616 /* CreateEventVC.swift */,
+				3686552F2737848C00836616 /* EventCell.swift */,
+				3686552B273738B200836616 /* EventDetailsVC.swift */,
 				1AFB4D87271C2327006621E9 /* FeedNavigationVC.swift */,
 			);
 			path = Feed;
@@ -257,10 +266,12 @@
 				1ADC5868271250090067693B /* SOCUser.swift in Sources */,
 				1ADC586C271250B50067693B /* SOCAuthManager.swift in Sources */,
 				1ADC587A271255460067693B /* LoadingButton.swift in Sources */,
+				3686552E27373F3900836616 /* CreateEventVC.swift in Sources */,
 				1ADC5882271255DC0067693B /* UIViewController+HideKeyboard.swift in Sources */,
 				1ADC5880271255DC0067693B /* UIColor+ColorScheme.swift in Sources */,
 				1AFB4D88271C2327006621E9 /* FeedNavigationVC.swift in Sources */,
 				1ADC586E271253E90067693B /* SOCDBRequest.swift in Sources */,
+				368655302737848C00836616 /* EventCell.swift in Sources */,
 				1ADC5879271255460067693B /* SigninVC.swift in Sources */,
 				3646A393272F213F00595062 /* SignupVC.swift in Sources */,
 				1ADC586A271250500067693B /* SOCEvent.swift in Sources */,
@@ -268,6 +279,7 @@
 				1ADC5846271249AB0067693B /* AppDelegate.swift in Sources */,
 				1ADC5881271255DC0067693B /* UIColor+Hex.swift in Sources */,
 				1ADC5878271255460067693B /* HorizontalActionLabel.swift in Sources */,
+				3686552C273738B200836616 /* EventDetailsVC.swift in Sources */,
 				1ADC5848271249AB0067693B /* SceneDelegate.swift in Sources */,
 				1ADC587B271255460067693B /* AuthTextField.swift in Sources */,
 			);

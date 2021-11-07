@@ -25,7 +25,7 @@ class SignupVC: UIViewController {
         lbl.text = "Sign up to continue"
         lbl.textColor = .primaryText
         lbl.font = .systemFont(ofSize: 20, weight: .semibold)
-        
+        lbl.textAlignment = .center
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
     }()

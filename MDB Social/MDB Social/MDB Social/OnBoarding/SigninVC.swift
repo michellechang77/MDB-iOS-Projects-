@@ -137,6 +137,7 @@ class SigninVC: UIViewController {
     }
 
     @objc func didTapSignIn(_ sender: UIButton) {
+        
         guard let email = emailTextField.text, email != "" else {
             showErrorBanner(withTitle: "Missing email", subtitle: "Please provide an email")
             return

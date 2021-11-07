@@ -54,7 +54,7 @@ class FIRDatabaseRequest {
                                     }
                                     events.append(event)
                                 }
-                                //vc.updateEvents(newEvents: events)
+                                vc.updateEvents(newEvents: events)
                             }
                     }
             
