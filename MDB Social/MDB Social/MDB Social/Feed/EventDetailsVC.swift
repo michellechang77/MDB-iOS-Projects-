@@ -25,21 +25,21 @@ class EventDetailsVC: UIViewController {
             let gsReference: StorageReference = Storage.storage().reference(forURL: currEvent!.photoURL)
             gsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
                 if let error = error {
-                    print("bad stuff happened: \(error)")
+                    print("oh no: \(error)")
                   } else {
                     self.imageView.image = UIImage(data: data!)
                   }
             }
             
             nameEvent.text = currEvent!.name
-            rsvpd.text = "RSVP'd: \(currEvent?.rsvpUsers.count ?? 0)"
+            rsvpd.text = "RSVP'ed: \(currEvent?.rsvpUsers.count ?? 0)"
             let docRef = FIRDatabaseRequest.shared.db.collection("users").document(currEvent!.creator)
             docRef.getDocument(completion: { (querySnapshot, err) in
                 if let err = err {
-                    print("Error getting docuemnt of event creator: \(err)")
+                    print("Could not retrieve document: \(err)")
                 } else {
                     guard let user = try? querySnapshot?.data(as: SOCUser.self) else {
-                        print("error in getting user of creator")
+                        print("Could not retrieve user")
                         return
                     }
                     self.nameCreator.text = "Creator: " + user.fullname
@@ -78,7 +78,7 @@ class EventDetailsVC: UIViewController {
     private var nameEvent: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 30)
-        label.textColor = .darkGray
+        label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -88,7 +88,7 @@ class EventDetailsVC: UIViewController {
     private var nameCreator: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20)
-        label.textColor = .gray
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -97,7 +97,7 @@ class EventDetailsVC: UIViewController {
     private var date: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.textColor = .gray
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -106,7 +106,7 @@ class EventDetailsVC: UIViewController {
     private var rsvpd: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.textColor = .gray
+        label.textColor = .black
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -115,7 +115,7 @@ class EventDetailsVC: UIViewController {
     private var desc: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18)
-        label.textColor = .gray
+        label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0 //unlimited # lines
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -124,7 +124,7 @@ class EventDetailsVC: UIViewController {
     
     private var rsvpBtn: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = UIColor(red: 141/255, green: 153/255, blue: 174/255, alpha: 1)
+        btn.backgroundColor = .lightGray
         btn.titleLabel?.font = .boldSystemFont(ofSize: 18)
         btn.layer.cornerRadius = 20
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +134,7 @@ class EventDetailsVC: UIViewController {
     private var deleteEvent: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 15
-        btn.backgroundColor = UIColor(red: 217/255, green: 4/255, blue: 41/255, alpha: 1)
+        btn.backgroundColor = .lightGray
         btn.setTitle("Delete Event", for: .normal)
         btn.titleLabel?.font = .boldSystemFont(ofSize: 15)
         btn.isHidden = true
@@ -162,7 +162,7 @@ class EventDetailsVC: UIViewController {
         if (isRsvpd) {
             rsvpBtn.setTitle("Cancel RSVP", for: .normal)
         } else {
-            rsvpBtn.setTitle("RSVP!", for: .normal)
+            rsvpBtn.setTitle("RSVP", for: .normal)
         }
         
         view.addSubview(stack)
@@ -223,22 +223,6 @@ class EventDetailsVC: UIViewController {
             rsvpBtn.setTitle("Cancel RSVP", for: .normal)
         }
         
-//        eventRef.updateData(["rsvpUsers": currEvent!.rsvpUsers], completion: { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        })
-//        eventRef.updateData([
-//            "rsvpUsers": currEvent!.rsvpUsers
-//        ]) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
     }
     
     @objc func didTapDeleteEvent(_ sender: UIButton) {

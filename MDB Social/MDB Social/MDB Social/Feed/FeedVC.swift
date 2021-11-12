@@ -50,7 +50,7 @@ class FeedVC: UIViewController {
     
     private let createEventButton: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = UIColor(red: 171/255, green: 196/255, blue: 255/255, alpha: 1)
+        btn.backgroundColor = .gray
         btn.setImage(UIImage(systemName: "plus"), for: .normal)
         let config = UIImage.SymbolConfiguration(font: .systemFont(ofSize: 40, weight: .medium))
         btn.setPreferredSymbolConfiguration(config, forImageIn: .normal)
@@ -87,7 +87,8 @@ class FeedVC: UIViewController {
         NSLayoutConstraint.activate([
             createEventButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             createEventButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            createEventButton.widthAnchor.constraint(equalToConstant: view.frame.width * (4/5)),
+            createEventButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 4.0/5.0),
+            //createEventButton.widthAnchor.constraint(equalToConstant: view.frame.width * (4/5)),
             createEventButton.heightAnchor.constraint(equalToConstant: 43)
         ])
         createEventButton.addTarget(self, action: #selector(didTapCreateEvent(_:)), for: .touchUpInside)

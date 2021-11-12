@@ -91,20 +91,7 @@ class EventCell: UICollectionViewCell {
         
         //source for rounded cells: https://medium.com/dev-genius/swift-how-to-create-a-rounded-collectionviewcell-with-shadow-d696bd46c43f
         self.layer.cornerRadius = 15.0
-        self.layer.borderWidth = 5.0
-        self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
-        self.contentView.layer.cornerRadius = 15.0
-        self.contentView.layer.borderWidth = 5.0
-        self.contentView.layer.borderColor = UIColor.clear.cgColor
-        self.contentView.layer.masksToBounds = true
-        self.layer.shadowColor = UIColor.white.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 0.0)
-        self.layer.shadowRadius = 6.0
-        self.layer.shadowOpacity = 0.6
-        self.layer.cornerRadius = 15.0
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 35),

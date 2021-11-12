@@ -103,6 +103,9 @@ class SignupVC: UIViewController {
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -contentEdgeInset.right)
         ])
         
+        
+            
+        
         view.addSubview(stack)
         stack.addArrangedSubview(nameTextField)
         stack.addArrangedSubview(emailTextField)
