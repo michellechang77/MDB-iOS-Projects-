@@ -31,7 +31,7 @@ class FIRDatabaseRequest {
         do {
             try db.collection("events").document(id).setData(from: event)
             completion?()
-        } catch { }
+        } catch {}
     }
     
     /* TODO: Events getter */

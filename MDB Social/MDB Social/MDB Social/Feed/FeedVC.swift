@@ -97,7 +97,7 @@ class FeedVC: UIViewController {
     @objc func didTapSignOut(_ sender: UIButton) {
         SOCAuthManager.shared.signOut {
             guard let window = UIApplication.shared
-                    .windows.filter({ $0.isKeyWindow }).first else { return }
+                    .windows.filter({$0.isKeyWindow }).first else { return }
             let vc = UIStoryboard(name: "Auth", bundle: nil).instantiateInitialViewController()
             window.rootViewController = vc
             let options: UIView.AnimationOptions = .transitionCrossDissolve

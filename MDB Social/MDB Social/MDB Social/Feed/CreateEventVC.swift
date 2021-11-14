@@ -16,7 +16,7 @@ class CreateEventVC: UIViewController, UINavigationControllerDelegate {
             let lbl = UILabel()
             lbl.text = "Create an event"
             lbl.font = UIFont.boldSystemFont(ofSize: 25)
-            lbl.textColor = UIColor(red: 133/255, green: 169/255, blue: 255/255, alpha: 1)
+            lbl.textColor = .black
             lbl.textAlignment = .center
             lbl.translatesAutoresizingMaskIntoConstraints = false
             return lbl
@@ -50,11 +50,11 @@ class CreateEventVC: UIViewController, UINavigationControllerDelegate {
         
         private let createEventButton: UIButton = {
             let button = UIButton()
-            button.setTitle("Create my event!", for: .normal)
+            button.setTitle("Create my event", for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             button.setTitleColor(.white, for: .normal)
-            button.backgroundColor = UIColor(red: 193/255, green: 211/255, blue: 254/255, alpha: 1)
-            button.layer.cornerRadius = 20
+            button.backgroundColor = .systemGreen
+            button.layer.cornerRadius = 10
             button.translatesAutoresizingMaskIntoConstraints = false
             return button
         }()
@@ -75,8 +75,10 @@ class CreateEventVC: UIViewController, UINavigationControllerDelegate {
         private let imagePickerBtn: UIButton = {
             let btn = UIButton()
             btn.setTitle("Select an image", for: .normal)
+            btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             btn.layer.cornerRadius = 10
-            btn.setTitleColor(UIColor(red: 193/255, green: 211/255, blue: 254/255, alpha: 1), for: .normal)
+            btn.setTitleColor(.white, for: .normal)
+            btn.backgroundColor = .systemBlue
             btn.translatesAutoresizingMaskIntoConstraints = false
             return btn
         }()
@@ -131,15 +133,15 @@ class CreateEventVC: UIViewController, UINavigationControllerDelegate {
         }
         
         @objc func didTapCreateEvent(_ sender: UIButton) {
-            guard let name1 = nameEventTextField.text, name1 != "" else {
+            guard let name = nameEventTextField.text, name != "" else {
                 showErrorBanner(withTitle: "Missing event name",
-                                subtitle: "Please provide an event name")
+                                subtitle: "Provide event name")
                 return
             }
             
             guard let desc = eventDescriptionField.text, desc != "" else {
                 showErrorBanner(withTitle: "Missing event description",
-                                subtitle: "Please provide an event description")
+                                subtitle: "Provide event description")
                 return
             }
             if (desc.count > 140) {
@@ -149,11 +151,11 @@ class CreateEventVC: UIViewController, UINavigationControllerDelegate {
             }
             if (pickedImage == nil) {
                 showErrorBanner(withTitle: "Missing event image",
-                                subtitle: "Please select an image")
+                                subtitle: "Select image")
                 return
             }
             if (pickedDate == nil || pickedImageData == nil) {
-                //will always be a date selected i think (default is current date+time)
+        
                 return
             }
             
@@ -161,22 +163,27 @@ class CreateEventVC: UIViewController, UINavigationControllerDelegate {
             
             
             let ref = Storage.storage().reference().child(UUID().uuidString + ".jpeg")
-            _ = ref.putData(pickedImageData!, metadata: nil) { (metadata, error) in
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            _ = ref.putData(pickedImageData!, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                    print(error)
+                    return
+                }
               ref.downloadURL { (url, error) in
                 guard let downloadURL = url else {
                     print("ERROR OCCURED WHILE DOWNLOADING URL - error: \(String(describing: error))")
                   return
                 }
-                let event: SOCEvent = SOCEvent(name: name1, description: desc, photoURL: downloadURL.relativeString, startTimeStamp: Timestamp(date: self.pickedDate!), creator: currID, rsvpUsers: [])
-                //create document on firestore and set data
-                FIRDatabaseRequest.shared.db.collection("events").document(event.id!)
+                let event: SOCEvent = SOCEvent(name: name, description: desc, photoURL: downloadURL.absoluteString, startTimeStamp: Timestamp(date: self.pickedDate!), creator: currID, rsvpUsers: [])
+//                FIRDatabaseRequest.shared.db.collection("events").document(event.id!)
                 FIRDatabaseRequest.shared.setEvent(event, completion: {})
               }
             }
             dismiss(animated: true, completion: nil)
         }
         
-        //stackoverflow credits :') https://stackoverflow.com/questions/41717115/how-to-make-uiimagepickercontroller-for-camera-and-photo-library-at-the-same-tim
+        //stackoverflow: https://stackoverflow.com/questions/41717115/how-to-make-uiimagepickercontroller-for-camera-and-photo-library-at-the-same-tim
         @objc func didTapChooseImage(_ sender: UIButton) {
             let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in

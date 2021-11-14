@@ -22,9 +22,9 @@ class SigninVC: UIViewController {
     
     private let titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Welcome,"
+        lbl.text = "Welcome"
         lbl.textColor = .primaryText
-        lbl.font = .systemFont(ofSize: 30, weight: .semibold)
+        lbl.font = .systemFont(ofSize: 40, weight: .semibold)
         
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
@@ -34,7 +34,7 @@ class SigninVC: UIViewController {
         let lbl = UILabel()
         lbl.text = "Sign in to continue"
         lbl.textColor = .secondaryText
-        lbl.font = .systemFont(ofSize: 17, weight: .medium)
+        lbl.font = .systemFont(ofSize: 20, weight: .medium)
         
         lbl.translatesAutoresizingMaskIntoConstraints = false
         return lbl
@@ -42,7 +42,6 @@ class SigninVC: UIViewController {
     
     private let emailTextField: AuthTextField = {
         let tf = AuthTextField(title: "Email:")
-        
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
     }()
@@ -70,7 +69,6 @@ class SigninVC: UIViewController {
         let actionLabel = HorizontalActionLabel(
             label: "Don't have an account?",
             buttonTitle: "Sign Up")
-        
         actionLabel.translatesAutoresizingMaskIntoConstraints = false
         return actionLabel
     }()
